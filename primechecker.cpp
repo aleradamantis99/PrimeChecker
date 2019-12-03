@@ -35,7 +35,7 @@ void PrimeChecker::read_commands()
         cv.notify_all();}
 }
 
-void PrimeChecker::check_prime()
+void PrimeChecker::check_prime(std::stop_token st)
 {
     ++available_threads;
     while (not exit)

@@ -22,9 +22,7 @@ int main()
     for (thread_t& t: consumers)
     {
     	//Si quisiera usar stop_toke:
-    	//t = thread_t([&](std::stop_token st){ g.check_prime(std::move(st)); });
-    	//Y anadir como argumento a check_prime un stop_token
-        t = thread_t(&PrimeChecker::check_prime, std::ref(g));
+    	t = thread_t([&](std::stop_token st){ g.check_prime(std::move(st)); });
     }
 	read.join();
 	std::cout << "Saliendo..." << std::endl;

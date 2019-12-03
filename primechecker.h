@@ -14,7 +14,7 @@
 class PrimeChecker
 {
 private:
-    std::atomic<bool> exit = false;
+    std::atomic_bool exit = false;
     std::queue<size_t> q{};
 
     std::mutex q_acces;
@@ -29,7 +29,7 @@ public:
     void read_commands();
 
     //Consumer Method
-    void check_prime();
+    void check_prime(std::stop_token st);
 
 private:
     void manage_input(const std::string& inp);
